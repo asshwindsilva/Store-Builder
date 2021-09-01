@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { addShops, removeShops, completeShops } from '../redux/reducer';
+import { addShops, removeShops } from '../redux/reducer';
 import { GoPlus } from "react-icons/go"
 
 const mapStateToProps = (state) => {
@@ -13,8 +13,7 @@ const mapStateToProps = (state) => {
 const mapsDispatchToProps = (dispatch) => {
     return {
         addShop: (obj) => dispatch(addShops(obj)),
-        removeShop: (id) => dispatch(removeShops(id)),
-        completeShop: (id) => dispatch(completeShops(id))
+        removeShop: (id) => dispatch(removeShops(id))
     }
 }
 
@@ -86,7 +85,6 @@ const Form = (props) => {
             <button className="btn-add" onClick={() => props.addShop({
                 id: Math.floor(Math.random() * 1000),
                 item: shop, location, category, openingTime, closingTime,
-                completed: false
             })} ><GoPlus /></button>
         </div >
     )
