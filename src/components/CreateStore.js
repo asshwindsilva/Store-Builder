@@ -58,10 +58,9 @@ const Form = (props) => {
             <input id="name" type="text"
                 onChange={(e) => handleChange(e)}
                 className="shop-input"
-
             />
             <label htmlFor="location">Location</label>
-            <select id="cars" name="location"
+            <select className="location" id="cars"
                 onChange={(e) => handleLocation(e)}
             >
                 <option value="Mumbai">Mumbai</option>
@@ -72,7 +71,7 @@ const Form = (props) => {
             </select>
 
             <label htmlFor="category">Category</label>
-            <select id="catergory" name="category" onChange={(e) => handleCategory(e)}>
+            <select className="location" id="catergory" name="category" onChange={(e) => handleCategory(e)}>
                 <option value="Grocery">Grocery</option>
                 <option value="butcher">Butcher</option>
                 <option value="chemisty">Chemisty</option>
@@ -80,22 +79,15 @@ const Form = (props) => {
             </select>
 
             <label htmlFor="opening">opening time:</label>
-            <input type="time" id="opening" onChange={(e) => handleOpeningTime(e)} ></input>
+            <input className="location" type="time" id="opening" onChange={(e) => handleOpeningTime(e)} ></input>
             <label htmlFor="closing">closing time:</label>
-            <input type="time" id="closing" onChange={(e) => handleClosingTime(e)}  ></input>
+            <input className="location" type="time" id="closing" onChange={(e) => handleClosingTime(e)}  ></input>
 
             <button className="btn-add" onClick={() => props.addShop({
                 id: Math.floor(Math.random() * 1000),
                 item: shop, location, category, openingTime, closingTime,
                 completed: false
             })} ><GoPlus /></button>
-
-
-
-
-
-
-
         </div >
     )
 
