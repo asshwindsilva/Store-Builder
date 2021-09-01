@@ -1,10 +1,10 @@
 
 import React from 'react'
-
+import { AiOutlineDelete, AiOutlineFileDone } from "react-icons/ai"
 const StoreItem = (props) => {
     const { item, removeShop, completeShop } = props
     return (
-        <div className="content" className="card">
+        <div className="card">
 
             <h2 key={item.id}>{item.item}</h2>
 
@@ -24,8 +24,12 @@ const StoreItem = (props) => {
 
             </h2>
             <div className="btns">
-                <button onClick={() => removeShop(item.id)}>Delete</button>
-                <button onClick={() => completeShop(item.id)}>complete</button>
+                <button
+                    style={{ color: "red" }}
+                    onClick={() => removeShop(item.id)}><AiOutlineDelete /></button>
+                <button
+                    style={{ color: "green" }}
+                    onClick={() => completeShop(item.id)}><AiOutlineFileDone /></button>
             </div>
             {item.completed && <span className="completed">done</span>}
 

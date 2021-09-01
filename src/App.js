@@ -8,7 +8,7 @@ import DisplayStore from './components/DisplayStore';
 function App() {
   return (
     <div className="App">
-      <h1>Store for Shops</h1>
+      <h1> Shop builder</h1>
       <CreateStore />
       <DisplayStore />
     </div>
