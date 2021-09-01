@@ -20,12 +20,25 @@ const mapsDispatchToProps = (dispatch) => {
 const DisplayStore = (props) => {
 
     const [sort, setSort] = useState("active")
+    const [category, setCategory] = useState("category")
+    const handleCategory = (e) => {
+        console.log('sdfsdfsdf', e.target.value)
+        setCategory(e.target.value);
+    }
+
     return (
         <div className="displaytodos">
             <div className="buttons">
                 <button onClick={() => setSort("active")}>Active</button>
                 <button onClick={() => setSort("complete")}>Completed</button>
                 <button onClick={() => setSort("all")}>All</button>
+
+                <select className="location" id="filtercatergory" name="category" onChange={(e) => handleCategory(e)} >
+                    <option value="Grocery">Grocery</option>
+                    <option value="butcher">Butcher</option>
+                    <option value="chemisty">Chemisty</option>
+                    <option value="baker">baker</option>
+                </select>
             </div>
             <ul>
                 {
@@ -33,6 +46,22 @@ const DisplayStore = (props) => {
                         props.shops.map(item => {
                             return (
                                 item.completed === false &&
+                                <StoreItem
+                                    key={item.id}
+                                    item={item}
+                                    removeShop={props.removeShop}
+                                    completeShop={props.completeShop}
+                                />
+                            )
+                        }) : null
+
+
+                }
+                {
+                    props.shops.length > 0 && category != null ?
+                        props.shops.map(item => {
+                            return (
+                                item.category === category &&
                                 <StoreItem
                                     key={item.id}
                                     item={item}
@@ -66,6 +95,23 @@ const DisplayStore = (props) => {
                         props.shops.map(item => {
                             return (
 
+                                <StoreItem
+                                    key={item.id}
+                                    item={item}
+                                    removeShop={props.removeShop}
+                                    completeShop={props.completeShop}
+                                />
+                            )
+                        }) : null
+
+
+                }
+
+                {
+                    props.shops.catergory > 0 && sort === "item.catergory" ?
+                        props.shops.map(item => {
+                            return (
+                                item.complete === item.catergory &&
                                 <StoreItem
                                     key={item.id}
                                     item={item}
