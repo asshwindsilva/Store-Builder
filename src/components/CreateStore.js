@@ -24,8 +24,56 @@ const Form = (props) => {
     const [openingTime, setOpeningTime] = useState("");
     const [closingTime, setClosingTime] = useState("");
 
+    function calculateTotalMinutes(time) {
+        const hoursAndMinutes = time.split(':');
+        const hours = parseInt(hoursAndMinutes[0]);
+        const minutes = parseInt(hoursAndMinutes[1]);
+        const totalMinutes = minutes + (hours * 60);
+        return totalMinutes;
+    }
 
 
+    const submitStore = (shop, location, category, openingTime, closingTime) => {
+        const totalOpeningTimeInMinutes = calculateTotalMinutes(openingTime);
+        const totalClosingTimeInMinutes = calculateTotalMinutes(closingTime);
+        var regexp = /\d/g;
+
+        if (shop === "") {
+            alert("shop must have a name");
+            return;
+        }
+        if (regexp.test(shop)) {
+            alert("shop name must not contain numbers");
+            return;
+        }
+        if (location === "") {
+            alert("shop must have a location");
+            return
+        }
+
+        if (category === "") {
+            alert("shop must have a category");
+            return
+        }
+        if (openingTime === "") {
+            alert("shop must have a opening time");
+            return
+        }
+
+        if (totalClosingTimeInMinutes < totalOpeningTimeInMinutes) {
+            alert("Closing time must be greater than opening time");
+            return
+        }
+
+        if (closingTime === "") {
+            alert("shop must have a closing time");
+            return
+        }
+        props.addShop({
+            id: Math.floor(Math.random() * 1000),
+            item: shop, location, category, openingTime, closingTime,
+        })
+    }
 
 
     const handleChange = (e) => {
@@ -50,6 +98,8 @@ const Form = (props) => {
 
     console.log("props from shop", props)
 
+
+
     return (
         <div className="addshop">
 
@@ -62,6 +112,7 @@ const Form = (props) => {
             <select className="location" id="cars"
                 onChange={(e) => handleLocation(e)}
             >
+                <option value="">Select location</option>
                 <option value="Mumbai">Mumbai</option>
                 <option value="Pune">Pune</option>
                 <option value="Thane">Thane</option>
@@ -71,6 +122,7 @@ const Form = (props) => {
 
             <label htmlFor="category">Category</label>
             <select className="location" id="catergory" name="category" onChange={(e) => handleCategory(e)}>
+                <option value="">Select catergory</option>
                 <option value="Grocery">Grocery</option>
                 <option value="butcher">Butcher</option>
                 <option value="chemisty">Chemisty</option>
@@ -82,10 +134,8 @@ const Form = (props) => {
             <label htmlFor="closing">closing time:</label>
             <input className="location" type="time" id="closing" onChange={(e) => handleClosingTime(e)}  ></input>
 
-            <button className="btn-add" onClick={() => props.addShop({
-                id: Math.floor(Math.random() * 1000),
-                item: shop, location, category, openingTime, closingTime,
-            })} ><GoPlus /></button>
+
+            <button className="btn-add" onClick={() => submitStore(shop, location, category, openingTime, closingTime)}><GoPlus /></button>
         </div >
     )
 

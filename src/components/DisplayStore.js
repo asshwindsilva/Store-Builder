@@ -16,6 +16,7 @@ const mapsDispatchToProps = (dispatch) => {
     }
 }
 
+
 const DisplayStore = (props) => {
 
     const [sort, setSort] = useState("all")
