@@ -124,6 +124,7 @@ const Form = (props) => {
             <select className="location" id="catergory" name="category" onChange={(e) => handleCategory(e)}>
                 <option value="">Select catergory</option>
                 <option value="Grocery">Grocery</option>
+                <option value="Sports">Sports</option>
                 <option value="butcher">Butcher</option>
                 <option value="chemisty">Chemisty</option>
                 <option value="baker">baker</option>

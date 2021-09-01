@@ -17,9 +17,7 @@ const StoreItem = (props) => {
                 <button
                     style={{ color: "red" }}
                     onClick={() => removeShop(item.id)}><AiOutlineDelete /></button>
-                <button
-                    style={{ color: "green" }}
-                    onClick={() => completeShop(item.id)}><AiOutlineFileDone /></button>
+
             </div>
             {item.completed && <span className="completed">done</span>}
         </div>

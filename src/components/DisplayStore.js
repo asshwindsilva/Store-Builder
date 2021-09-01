@@ -63,6 +63,7 @@ const DisplayStore = (props) => {
                 <select className="location" id="filtercatergory" name="category" onChange={(e) => handleCategory(e)} >
                     <option value="">Select category</option>
                     <option value="Grocery">Grocery</option>
+                    <option value="Sports">Sports</option>
                     <option value="butcher">Butcher</option>
                     <option value="chemisty">Chemisty</option>
                     <option value="baker">baker</option>
