@@ -46,12 +46,13 @@ const DisplayStore = (props) => {
 
             <div className="buttons">
 
-
+                <div><label className="filter" htmlFor="">Filter by</label></div>
                 <button onClick={() => handleSort()}>All</button>
 
                 <select className="location" id="cars"
                     onChange={(e) => selectLocation(e)}
                 >
+                    <option value="">Select location</option>
                     <option value="Mumbai">Mumbai</option>
                     <option value="Pune">Pune</option>
                     <option value="Thane">Thane</option>
@@ -60,6 +61,7 @@ const DisplayStore = (props) => {
                 </select>
 
                 <select className="location" id="filtercatergory" name="category" onChange={(e) => handleCategory(e)} >
+                    <option value="">Select category</option>
                     <option value="Grocery">Grocery</option>
                     <option value="butcher">Butcher</option>
                     <option value="chemisty">Chemisty</option>
